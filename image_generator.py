@@ -12,8 +12,8 @@ import os #manipulate directories
 
 #%%
 """These are the user inputs"""
-video_folder = "C:\\Users\\Kevin\\Desktop\\PhD\\lisboa\\23may\\four lights and white screen\\right" #the folder containing the video-- the images go here 
-video_name = "right.avi" #the name of the video 
+video_folder = "c:\\users\\kevin\\desktop\\phd\\lisboa\\try" #the folder containing the video-- the images go here 
+video_name = "t12.avi" #the name of the video 
 
 
 
@@ -30,7 +30,7 @@ os.chdir(video_folder) #this sets the current directory to the video_folder-- th
 def to_Images(video_path):
     container = av.open(video_path)
     for frame in container.decode(video=0):
-        frame.to_image().save('%s_right.jpg' % frame.index)
+        frame.to_image().save('frame-%04d.jpg' % frame.index)
 
 
 

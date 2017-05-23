@@ -15,9 +15,6 @@ import numpy as np #numpy array magic
 from time import time #time how long stuff takes 
 
 #%%
-img_folder = "c:\\users\\kevin\\desktop\\phd\\lisboa\\calibration1_L" #the folder containing the image 
-oimg_folder =  "c:\\users\\kevin\\desktop\\phd\\lisboa\\calibration1_R"
-img_name = "1.jpg" #the name of the image
 
 def to_binary(img_folder,img_name): #the function which intakes an image img_name and returns binary version B_img_name  using OTSU METHOD
     os.chdir(img_folder) #set the current directory to img_folder
@@ -41,6 +38,7 @@ def all_to_binary(img_folder): #iterate over every photo in a folder img_folder 
         if (filename.endswith('.png') or filename.endswith('.jpg')) and filename not in excluded: #if the filename represents a jpg image and is not excluded from manipulation
             t0 = time() #initial time of the manipulation of a single image 'filename' 
             to_binary(img_folder,filename)
+            #os.delete(img_folder+filename)#DELETE THE OLD IMAGE 
             excluded.append(filename) #make sure the old image is not modified again
             excluded.append("B_"+filename) #make sure the new image is not modified again
             print('Image ' + str(n) + ' of ' + str(N) + ' has been converted in %0.3fs.' % (time() - t0) ) #print how long it took 
@@ -50,3 +48,8 @@ def all_to_binary(img_folder): #iterate over every photo in a folder img_folder 
 """This does the same thing my previous code based upon the k-means algorithm did-- 
 all_to_binary converts folders of images to binary colors, except now it is much faster (and also less accurate).""" 
 
+#%%
+img_folder = "C:\\Users\\Kevin\\Desktop\\PhD\\lisboa\\23may\\four lights and white screen\\right" #the folder containing the image 
+oimg_folder =  "C:\\Users\\Kevin\\Desktop\\PhD\\lisboa\\23may\\four lights and white screen\\left"
+all_to_binary(img_folder)
+all_to_binary(oimg_folder)
